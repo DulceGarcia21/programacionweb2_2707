@@ -1,6 +1,26 @@
+
 let opci = prompt(`
-    Elija una opcion:
-    1.- Libros
-    2.- Peliculas
-    3
-`)
+        Elija una opcion:
+        1.- Lunes
+        2.- Martes
+        3.- Miercoles
+        4.- Jueves
+        5.- Viernes
+        6.- Sabado
+        7.-Domingo
+    `);
+
+    switch(opci){
+        case "1":
+            console.log("Principito");
+            break;
+        case "2":
+            console.log("Matrix");
+            break;
+        case "3":
+            console.log("Minecraft");
+            break;
+        default:
+            console.log("No valido");
+            break;
+    }
