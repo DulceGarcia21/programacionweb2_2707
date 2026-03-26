@@ -1,47 +1,53 @@
-let alumno={
-    id: 321137104,
+let alumno = {
+    id: 987654321,
     nombre: "Dulce",
     primerApellido: "Garcia",
     segundoApellido: "Cruz",
-    edad: 20,
-    titulado: false, 
-    egresado:{ 
-        egresados: false,
-        semestreCursado: 6,
-        materiasDever: false,
-        turno: "matutino",
-        promedio: 9.3,
+    edad: 22,
+    titulado: true, 
+    egresado: { 
+        egresados: true,
+        semestreCursado: 10,
+        materiasDever: true,
+        turno: "matutino", // se mantiene igual
+        promedio: 9.3,     // se mantiene igual
     },
-    domicilio:{
-        calle: "Regina",
+    domicilio: {
+        calle: "Av. Insurgentes",
         numero: {
-            exterior: 61,
-            interior: "F201",
+            exterior: 1500,
+            interior: "A302",
         },
-        colonia: "Centro",
-        alcaldia: "Cuautemoc",
+        colonia: "Del Valle",
+        alcaldia: "Benito Juarez",
         estado: "CDMX",
         pais: "Mexico",
-        continente: "latinoamerica",
+        continente: "America",
     },
-    kinder:{
-        nombre: "Instituto Villa de Cortes",
+    kinder: {
+        nombre: "Colegio Pequeños Genios",
         actividadesPrimerdia: function(){
-            console.log("llorar");
+            console.log("saludar");
         },
         actividadesRecurentes: function(){
-            console.log("Jugar");
+            console.log("dibujar");
+        },
+        datosMiss: {
+            nombre: "Laura",
+            edad: 35,
+            estudios: "Licenciatura"
         }
     },
-    primaria:{
-        nombre: "Instituto Villa de Cortes",
-        comer (comida){
-            return "Ahora esta comiendo "+comida;
+    primaria: {
+        nombre: "Escuela Benito Juarez",
+        comer(comida){
+            return "Ahora está comiendo " + comida;
         },
-        mensaje (mensajeAlumno){
-            return `${this.nombre} es la primaria y el alumno tiene que ir a ${mensajeAlumno}`
+        mensaje(mensajeAlumno){
+            return `${this.nombre} es la primaria y el alumno tiene que ir a ${mensajeAlumno}`;
         }
     }
-}
+};
+console.log(alumno.kinder.datosMiss.nombre);
 console.log(alumno.primaria.mensaje("Direccion"));
 console.log(alumno.primaria.comer("nuggets"));
