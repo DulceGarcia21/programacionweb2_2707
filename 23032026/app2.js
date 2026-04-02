@@ -1,9 +1,9 @@
 let productos =[
-    {nombre: 'camisa',   precio: 300},
-    {nombre: 'pantalon', precio: 550},
-    {nombre: 'zapatos',  precio: 750},
-    {nombre: 'sombrero', precio: 550},
-    {nombre: 'tenis',    precio: 1200}
+    {nombre: 'camisa',   precio: 300,  stock: 3, disponible: true},
+    {nombre: 'pantalon', precio: 550,  stock: 5, disponible: true},
+    {nombre: 'zapatos',  precio: 750,  stock: 4, disponible: true},
+    {nombre: 'sombrero', precio: 550,  stock: 2, disponible: true},
+    {nombre: 'tenis',    precio: 1200, stock: 4, disponible: true}
 ];
 
 let carrito=[];
@@ -12,7 +12,9 @@ let carrito=[];
 function  mostrarMenu(){
    let menu = "Seleccione un producto para agregar al carrito\n";
    for( let i = 0 ;i< productos.length ; i++ ){
-        menu += (i+1)+" .- " + productos[i].nombre + "- $"+ productos[i].precio+"\n";
+        menu += (i+1)+" .- " + productos[i].nombre + "- $"+ productos[i].precio
+        +" | Stock: "+productos[i].stock
+        +" | "+ (productos[i].disponible ? "Disponible" : "Agotado")+"\n";
    } 
 
    menu += (productos.length+1)+".- Ver carrito y Total\n";
@@ -24,7 +26,20 @@ function  mostrarMenu(){
 
 function agregarAlCarrito(index){  
     let productoSeleccionado = productos[index];
+    // Validar que aun haya productos
+    if(!productoSeleccionado.disponible){
+        console.log(`
+        El producto ${productoSeleccionado.nombre} esta agotado    
+        `);
+        return;
+    }
     carrito.push(productoSeleccionado);
+    productoSeleccionado.stock--;
+    // Actualizar el esatdo cuando se acaben los productos
+    if(productoSeleccionado.stock === 0){
+        productoSeleccionado.disponible = false;
+    }
+
     console.log(`Producto ${productoSeleccionado.nombre} se agrego al carrito`);
 }
 
@@ -47,11 +62,18 @@ function mostrarCarritoTotaL(){
 function agregarProductoATienda(){
     let nombre = prompt("Ingresa el nombre del nuevo producto:");
     let precio = prompt("Ingresa el precio del producto:");
+    let stock = Number(prompt("Ingresa la cantidad disponible:"));
+
 
     precio = Number(precio);
 
-    if(nombre && !isNaN(precio) && precio > 0){
-        productos.push({nombre: nombre, precio: precio});
+    if(nombre && !isNaN(precio) && precio > 0 && !isNaN(stock) > 0){
+        productos.push({
+            nombre: nombre, 
+            precio: precio,
+            stock: stock,
+            disponible: stock > 0
+        });
         console.log(`Producto ${nombre} agregado correctamente con precio $${precio}`);
     }else{
         console.log("Datos invalidos, no se agrego el producto");
