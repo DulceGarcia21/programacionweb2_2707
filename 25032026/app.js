@@ -19,7 +19,7 @@ function agregarTarea(){
         let nuevaTarea = {
             nombre: nombre,
             completada: false
-        };
+        }
 
         tareas.push(nuevaTarea);
 
@@ -45,10 +45,10 @@ function marcarTareaComletada(){
     if(numero > 0 && numero <= tareas.length){
         tareas[numero-1].completada = true;
         alert(`
-        La tarea : ${tarea[numero-1]} a sido marcada como completada   
+        La tarea : ${tareas[numero-1]} ha sido marcada como completada   
             `);
     }else{
-        alert("Numero de tarea invalido");
+        alert("Numero de tarea invalido")
     }
 }
 
@@ -69,8 +69,8 @@ function iniciarPrograma(){
                 marcarTareaComletada();
                 break;
             case 4:
-                alert("Saliendo del programa");
                 bandera = false;
+                alert("Saliendo del programa");
                 break;
             default:
                 alert("Opcion no valida");
