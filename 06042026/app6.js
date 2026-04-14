@@ -1,8 +1,18 @@
 const listaDinamica = document.querySelector("#lista");
 
-//cerar un nuevo elemento
+// crear un nuevo elemento
 const li = document.createElement("li");
+// agregar texto al nuevo elemento
+li.textContent = "Elemento dinámico 1";
+// agregar el nuevo elemento a la lista
+listaDinamica.appendChild(li);
 
-//agregar texto al nuevo elemento
-li2.textContent ="Elemento dinamico 2"; 
+// crear otro elemento
+const li2 = document.createElement("li");
+li2.textContent = "Elemento dinámico 2";
 listaDinamica.appendChild(li2);
+
+// crear un tercer elemento
+const li3 = document.createElement("li");
+li3.textContent = "Elemento dinámico 3";
+listaDinamica.appendChild(li3);
