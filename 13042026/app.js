@@ -13,3 +13,18 @@ function calcularResultado() {
     }
 
 }
+
+document.addEventListener("keydown", function(event) {
+    const tecla = event.key;
+    if ((tecla >= '0' && tecla <= '9') || ['+', '-', '*', '/', '.'].includes(tecla)) {
+        agregarPantalla(tecla);
+    } else if (tecla === 'Enter') {
+        event.preventDefault();
+        calcularResultado();
+    } else if (tecla === 'Backspace') {
+        let pantalla = document.getElementById("pantalla");
+        pantalla.value = pantalla.value.slice(0, -1);
+    } else if (tecla === 'Escape') {
+        limpiarPantalla();
+    }
+});
