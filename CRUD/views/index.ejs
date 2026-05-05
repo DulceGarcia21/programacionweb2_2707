@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sistema de usuarios</title>
+    <link rel="stylesheet" href="/styles.css">
+
+</head>
+<body>
+    <!--Formulario para crear un nuevo usuario-->
+    <form action="/add" method="post">
+        <label for="username">Nombre de usuarios</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <br>
+        <label for="email">Correo Electrónico</label>
+        <input type="email"  name="correo" required><br><br>
+        <br>
+        <button type="submit">Crear Usuario</button>
+    </form>
+    <!--Tabla para mostrar los usuarios existentes-->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre de Usuario</th>
+                <th>Correo </th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--Utlizar un bloque de EJS con un forEach para ver los datos de los usuarios-->
+            <% users.forEach(user => { %>
+                <tr>
+                    <td><%= user.nombre %></td>
+                    <td><%= user.correo %></td>
+                    <!-- anclas poara editar y eliminar usuarios -->
+                     <td>
+                        <a href="/edit/<%= user.id %>">Editar</a>
+                        <a href="/delete/<%= user.id %>">Eliminar</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>
